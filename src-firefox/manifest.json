@@ -1,0 +1,45 @@
+{
+
+    "manifest_version": 2,
+    "name": "__MSG_appName__",
+    "version": "2.2.1",
+    "description": "__MSG_appDesc__",
+    "default_locale": "en_US",
+    "background": {
+        "page": "html/intro.html"
+    },
+    "icons": {
+        "16": "img/icon16.png",
+        "48": "img/icon48.png",
+        "128": "img/icon128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.youtube.com/*"
+            ],
+            "run_at": "document_start",
+            "js": [
+                "js/content-script.js"
+            ],
+            "css": [
+                "css/content-script.css"
+            ]
+        }
+    ],
+    "externally_connectable": {
+        "matches": [
+            "*://*.youtube.com/*",
+            "*://*.musixmatch.com/*"
+        ]
+    },
+    "web_accessible_resources": [
+        "js/bridge.js",
+        "js/adsense.js"
+    ],
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+    "permissions": [
+        "cookies",
+        "*://*.musixmatch.com/*"
+    ]
+}
